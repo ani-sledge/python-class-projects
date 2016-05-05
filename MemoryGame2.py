@@ -6,8 +6,8 @@ import random
 # Global variables
 
 image = simplegui.load_image("https://www.usgamesinc.com/files/detailed_images/ANS108_2.jpg")
-print image.get_width()
-print image.get_height()
+image_width = image.get_width()
+image_height = image.get_height()
 WIDTH = 800
 HEIGHT = 80
 card_num = 16
@@ -33,8 +33,8 @@ def new_game():
 # Event handlers
 def mouseclick(pos):
     global state, c1, c2, turns
-    if not exposed[pos[0] / 50]: 
-        exposed[pos[0] / 50] = True
+    if not exposed[pos[0] / card_width]: 
+        exposed[pos[0] / card_width] = True
 
         if state == 0:
             state = 1
@@ -46,7 +46,7 @@ def mouseclick(pos):
             if memory[c1] != memory[c2]:
                 exposed[c1], exposed[c2] = False, False
         c2 = c1
-        c1 = pos[0] / 50 
+        c1 = pos[0] / card_width 
         label.set_text("Turns = " + str(turns))
     
 # Draw handler    
@@ -57,8 +57,8 @@ def draw(canvas):
         if exposed[count]: 
             canvas.draw_text(str(number), (x - 10, 55), 40, "White") 
         else: 
-            canvas.draw_image(image, (300 / 2, 418 / 2), (300, 418), (x, HEIGHT / 2), (50, HEIGHT))
-        x += 50
+            canvas.draw_image(image, (image_width / 2, image_height / 2), (image_width, image_height), (x, HEIGHT / 2), (50, HEIGHT))
+        x += card_width
         count += 1
 
 # Creates frame and adds a button and labels
