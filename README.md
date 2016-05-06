@@ -8,5 +8,5 @@ These projects include:
 - Mancala
 - 2048
 - Memory 
+- Ping Pong
 - RiceRocks (like Asteroid) 
-- TicTacToe
